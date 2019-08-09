@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8e8cdb23-f8c0-4328-a4cc-8a437278b4b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/loom/python/model_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/loom/python/model_create.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loom/python/model_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/loom/python/model_preprocessing.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +39,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="69">
+              <caret line="59" column="62" selection-start-line="59" selection-start-column="62" selection-end-line="59" selection-end-column="62" />
+              <folding>
+                <element signature="e#110#120#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loom/python/model_preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
+            <state relative-caret-position="345">
               <caret line="62" column="100" selection-start-line="62" selection-start-column="100" selection-end-line="62" selection-end-column="100" />
               <folding>
                 <element signature="e#370#389#0" expanded="true" />
@@ -415,7 +417,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loom/python/model_preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
+        <state relative-caret-position="345">
           <caret line="62" column="100" selection-start-line="62" selection-start-column="100" selection-end-line="62" selection-end-column="100" />
           <folding>
             <element signature="e#370#389#0" expanded="true" />
@@ -425,8 +427,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="69">
+          <caret line="59" column="62" selection-start-line="59" selection-start-column="62" selection-end-line="59" selection-end-column="62" />
+          <folding>
+            <element signature="e#110#120#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

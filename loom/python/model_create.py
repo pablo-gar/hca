@@ -57,7 +57,7 @@ def main():
 
 
 
-    model = get_model(model_name, x_train, y_train)
+    model = get_model(model_name, x_train, y_train, n_iter=100)
 
     # Predict on test data and append predictions to original matrix
     y_test_predicted = model.predict(x_test)
@@ -67,8 +67,11 @@ def main():
     train_h5ad_original.obs[train_y_name + "_predicted_" + model_name] = y_train_predicted
 
     # Add assessment metric for the model as unstructured metadata
-    test_h5ad_original.uns['_metrics' + model_name] = DataFrame(model.cv_results_)
-    train_h5ad_original.uns['_metrics' + model_name] = DataFrame(model.cv_results_)
+    test_h5ad_original.uns['metrics_' + model_name] = DataFrame(model.cv_results_)
+    train_h5ad_original.uns['metrics_' + model_name] = DataFrame(model.cv_results_)
+
+    test_h5ad_original.uns['best_pars_' + model_name] = model.best_params_
+    train_h5ad_original.uns['best_pars_' + model_name] = model.best_params_
 
     # Save data
     test_h5ad_original.write(out_test_file)
