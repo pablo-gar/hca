@@ -11,7 +11,6 @@ from sklearn import neural_network
 from sklearn import gaussian_process
 import sklearn.metrics
 import model_utils
-from pandas import DataFrame
 from model_preprocessing import preprocessing
 
 
@@ -34,6 +33,7 @@ def main():
     #model_name = "LogisticRegression"
     #model_name = "MLPClassifier"
     #model_name = "GaussianProcess"
+    #model_name = "KNeighbors"
 
     # Read files
     train_h5ad = sc.read(train_file)
@@ -66,8 +66,8 @@ def main():
     train_h5ad_original.obs[train_y_name + "_predicted_" + model_name] = y_train_predicted
 
     # Add assessment metric for the model as unstructured metadata
-    test_h5ad_original.uns['metrics_' + model_name] = DataFrame(model.cv_results_)
-    train_h5ad_original.uns['metrics_' + model_name] = DataFrame(model.cv_results_)
+    test_h5ad_original.uns['metrics_' + model_name] = model.cv_results_
+    train_h5ad_original.uns['metrics_' + model_name] = model.cv_results_
 
     test_h5ad_original.uns['best_pars_' + model_name] = model.best_params_
     train_h5ad_original.uns['best_pars_' + model_name] = model.best_params_
