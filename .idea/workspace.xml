@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e8cdb23-f8c0-4328-a4cc-8a437278b4b1" name="Default Changelist" comment="" />
+    <list default="true" id="8e8cdb23-f8c0-4328-a4cc-8a437278b4b1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/loom/python/model_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/loom/python/model_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loom/python/model_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/loom/python/model_preprocessing.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,14 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#110#120#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loom/python/model_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3090">
-              <caret line="206" column="21" selection-start-line="206" selection-start-column="21" selection-end-line="206" selection-end-column="21" />
+            <state relative-caret-position="-10">
+              <caret line="91" column="2" selection-start-line="91" selection-start-column="2" selection-end-line="91" selection-end-column="2" />
               <folding>
                 <element signature="e#79#98#0" expanded="true" />
               </folding>
@@ -59,10 +59,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///miniconda3/envs/test/lib/python3.7/site-packages/sklearn/metrics/classification.py">
+        <entry file="file://$PROJECT_DIR$/loom/python/model_preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="1253" selection-start-line="1253" selection-end-line="1253" />
+            <state relative-caret-position="393">
+              <caret line="62" column="100" selection-start-line="62" selection-start-column="100" selection-end-line="62" selection-end-column="100" />
+              <folding>
+                <element signature="e#370#389#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,18 +101,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loom/python/model_preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="75" column="19" lean-forward="true" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-              <folding>
-                <element signature="e#370#389#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file:///miniconda3/envs/test/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="61">
@@ -150,8 +141,8 @@
         <option value="$PROJECT_DIR$/loom/python/model_utils.py" />
         <option value="$PROJECT_DIR$/test_space/test_models/test_scanvi.py" />
         <option value="$PROJECT_DIR$/test_space/test_models/test_model_on_loom" />
-        <option value="$PROJECT_DIR$/loom/python/model_create.py" />
         <option value="$PROJECT_DIR$/loom/python/model_preprocessing.py" />
+        <option value="$PROJECT_DIR$/loom/python/model_create.py" />
       </list>
     </option>
   </component>
@@ -214,6 +205,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test_space/test_models" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
@@ -272,8 +264,8 @@
       <window_info anchor="right" id="R Packages" order="4" weight="0.32985157" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49295774" visible="true" weight="0.25250357" />
-      <window_info id="Structure" order="1" sideWeight="0.5070422" side_tool="true" visible="true" weight="0.25250357" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49295774" visible="true" weight="0.25250357" />
+      <window_info id="Structure" order="1" sideWeight="0.5070422" side_tool="true" weight="0.25250357" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299075" />
@@ -285,7 +277,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.327852" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.4677661" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.4677661" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -404,40 +396,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///miniconda3/envs/test/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/loom/python/model_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3090">
-          <caret line="206" column="21" selection-start-line="206" selection-start-column="21" selection-end-line="206" selection-end-column="21" />
+        <state relative-caret-position="-10">
+          <caret line="91" column="2" selection-start-line="91" selection-start-column="2" selection-end-line="91" selection-end-column="2" />
           <folding>
             <element signature="e#79#98#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#110#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loom/python/model_preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="75" column="19" lean-forward="true" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        <state relative-caret-position="393">
+          <caret line="62" column="100" selection-start-line="62" selection-start-column="100" selection-end-line="62" selection-end-column="100" />
           <folding>
             <element signature="e#370#389#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///miniconda3/envs/test/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py">
+    <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
