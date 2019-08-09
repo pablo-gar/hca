@@ -47,6 +47,7 @@ def preprocessing(adata: AnnData,
                   do_min_genes_filter: Optional[bool] = True,
                   do_select_variable_genes: Optional[bool] = True,
                   percent_cells: Optional[float] = 0.05,
+                  min_genes: Optional[float] = 10,
                   n_var_genes: Optional[int] = 2e3
                   ):
 
@@ -56,8 +57,10 @@ def preprocessing(adata: AnnData,
     :param adata: annData
     :param do_log1p: Boolean - If True it will do log1p transformation
     :param do_min_cells_filter: Boolean - If True it will apply gene filter based on no of cells expressing
+    :param do_min_genes_filter: Boolean - If True it will apply ce;; filter based on no of genes being expressed
     :param do_select_variable_genes: - If True it will apply select and create variable genes by returning a view of the data
     :param percent_cells: float - frequency of cell expressing genes used for min_cells_filter
+    :param min_genes: int - minimum number of expressed genes for a cell to pass the min_genes_filter
     :param n_var_genes: int - select this number of var genes
     :return: annData
     '''
@@ -74,7 +77,7 @@ def preprocessing(adata: AnnData,
 
     if do_min_genes_filter:
         print("Applying min cells filter: only keep genes if expressed in at least", str(percent_cells * 100), "% cells")
-        sc.pp.filter_cells(adata, min_genes=10)
+        sc.pp.filter_cells(adata, min_genes=min_genes)
 
     if do_select_variable_genes:
         print("Selecting", str(n_var_genes), "variable genes")

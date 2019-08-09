@@ -2,7 +2,6 @@
 
 import sys
 import scanpy as sc
-import numpy as np
 from sklearn import svm
 from sklearn import ensemble
 from sklearn import linear_model
@@ -20,8 +19,8 @@ def main():
 
     model_name = sys.argv[1]
     train_file = sys.argv[2]
-    test_file = sys.argv[4]
-    train_y_name = sys.argv[3]
+    test_file = sys.argv[3]
+    train_y_name = sys.argv[4]
 
     out_train_file = sys.argv[-2]
     out_test_file = sys.argv[-1]
@@ -44,8 +43,8 @@ def main():
     test_h5ad_original = test_h5ad.copy()
 
     # Process
-    train_h5ad = preprocessing(train_h5ad, do_log1p=True, do_min_cells_filter=True, do_select_variable_genes=True)
-    test_h5ad = preprocessing(test_h5ad, do_log1p=True, do_min_cells_filter=False, do_select_variable_genes=False)
+    train_h5ad = preprocessing(train_h5ad, do_log1p=True, do_min_cells_filter=True, do_select_variable_genes=True, do_min_genes_filter=False)
+    test_h5ad = preprocessing(test_h5ad, do_log1p=True, do_min_cells_filter=False, do_select_variable_genes=False, do_min_genes_filter=False)
 
     # Select same genes
     train_h5ad, test_h5ad = model_utils.subset_annData(train_h5ad, test_h5ad)
