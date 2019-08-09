@@ -1,0 +1,101 @@
+import scanpy as sc
+import scipy
+from sklearn import svm
+from sklearn import model_selection
+import sys
+
+
+
+in_loom_train = "/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/H1_cells/data/paper.loom"
+in_loom_test = "/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/H1_cells/data/hca_cellTypes.loom"
+
+#---------------------------
+# Example of pre-processing
+
+loom = sc.read_loom(in_loom_train)
+loom_test = sc.read_loom(in_loom_test)
+
+loom.var_names_make_unique()
+loom_test.var_names_make_unique()
+
+# First find do log1p transformation
+sc.pp.filter_genes(loom, min_cells=int(0.05 * loom.shape[0]))
+sc.pp.log1p(loom)
+
+sc.pp.log1p(loom_test)
+
+
+# Then find variable genes
+sc.pp.highly_variable_genes(loom, n_top_genes=2000, flavor="seurat")
+
+# Create the matrix with only variable genes ready for sklean
+highly_variable_genes = loom.var.highly_variable.to_list()
+loom_var = loom[:, highly_variable_genes]
+genes_in_test = [i in loom_test.var_names for i in loom_var.var_names]
+loom_var = loom_var[:, genes_in_test]
+x_train = loom_var.X.toarray()
+
+labels_train = loom.obs.cellType.to_list()
+
+# Select genes in loom test
+loom_test_var = loom_test[:, loom_var.var_names.to_list()]
+x_test = loom_test_var.X.toarray()
+labels_test = loom_test_var.obs.cellType.to_list()
+
+
+#---------------------------
+# Example of modeling
+
+# Learn some methods, suport vector machine
+svc = svm.SVC(gamma=1.916969131867515e-05, C=10, kernel="rbf")
+svc.fit(x_train, labels_train)
+
+labels_predicted = svc.predict(X=x_test)
+labels_predicted = labels_predicted.tolist()
+
+# Assess how well it did
+# METHOD 1
+matching = [i==j for i,j in zip(labels_predicted, labels_test)]
+# METHOD 2
+svc.score(X=x_train, y=labels_train)
+svc.score(X=x_test, y=labels_test)
+
+#---------------------------
+# Example of cross-validation
+
+# Do some cross validation
+scores = model_selection.cross_val_score(svc, x, labels, cv=5)
+
+
+#---------------------------
+# Example of grid search for paramaters
+gamma_factor = 1 / (x_train.shape[1] * x_train.var())
+tuned_paramaters = [{'kernel': ['rbf'], 'gamma': [gamma_factor * 1, gamma_factor * 1e1, gamma_factor * 1e2, gamma_factor * 1e-1, gamma_factor * 1e-2],
+                     'C': [1, 10, 100, 1000]},
+                    {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+
+metrics = ["accuracy", "precision", "roc_auc"]
+
+#svc_grid = model_selection.GridSearchCV(svm.SVC(), tuned_paramaters, cv=5, scoring=metrics)
+svc_grid = model_selection.GridSearchCV(svm.SVC(), tuned_paramaters, cv=5, scoring="accuracy", n_jobs=-1)
+svc_grid.fit(x_train, labels_train)
+
+#---------------------------
+# Visualazing
+
+sc.pp.pca(loom_var)
+sc.pp.neighbors(loom_var)
+sc.tl.umap(loom_var)
+sc.pl.umap(loom_var, color="cellType")
+
+
+# Add predicted labels
+loom_test_var.obs["cellTypePredicted"] = labels_predicted
+loom_test_var.obs["cellTypePredicted_missed"] = matching
+
+sc.pp.pca(loom_test_var)
+sc.pp.neighbors(loom_test_var)
+sc.tl.umap(loom_test_var)
+sc.pl.umap(loom_test_var, color="cellType")
+sc.pl.umap(loom_test_var, color="cellTypePredicted")
+sc.pl.umap(loom_test_var, color="cellTypePredicted_missed")
