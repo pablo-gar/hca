@@ -51,12 +51,11 @@ def main():
 
     # Get matrix and labels
     if train_y_name in test_h5ad.obs.keys():
-        x_train, y_train, x_test = model_utils.get_mat_and_lab(x=train_h5ad, x_lab=train_y_name, y=test_h5ad)
-    else:
         x_train, y_train, x_test,  y_test = model_utils.get_mat_and_lab(x=train_h5ad, x_lab=train_y_name, y=test_h5ad, y_lab=train_y_name)
+    else:
+        x_train, y_train, x_test = model_utils.get_mat_and_lab(x=train_h5ad, x_lab=train_y_name, y=test_h5ad)
 
-
-
+    # Train model
     model = get_model(model_name, x_train, y_train, n_iter=100)
 
     # Predict on test data and append predictions to original matrix
@@ -128,7 +127,7 @@ def get_model(model_name: str,
 
     if model_name == "GaussianProcess":
         model_obj = gaussian_process.GaussianProcessClassifier()
-        par_grid = model_utils.grid_dicts_MLPClassifier(for_randomized=do_randomized_grid_search)
+        par_grid = model_utils.grid_dicts_GaussianProcess(for_randomized=do_randomized_grid_search)
 
     # Train model
     if do_randomized_grid_search:
@@ -149,8 +148,5 @@ def get_model(model_name: str,
 
 if __name__ == "__main__":
     main()
-
-
-
 
 
