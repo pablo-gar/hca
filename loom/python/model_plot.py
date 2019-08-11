@@ -3,6 +3,7 @@ import os
 import model_preprocessing
 import sys
 import pandas as pd
+import json
 
 DPI = 300
 
@@ -13,9 +14,9 @@ def main():
     cellType_label = sys.argv[2]
     out_prefix = sys.argv[-1]
 
-    h5ad_file = '/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/pancreas/data/hca_model.h5ad'
-    out_prefix = '/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/pancreas/results/modeling_'
-    cellType_label = 'cellType'
+    #h5ad_file = '/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/pancreas/data/hca_model_alternative.h5ad'
+    #out_prefix = '/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/pancreas/results/modeling_alternative_'
+    #cellType_label = 'cellType'
 
     # Setting plotting settings
     sc.settings.autoshow = False
@@ -45,9 +46,29 @@ def main():
     sc.pl.umap(annData, color=cellType_label)
     sc.pl.umap(annData, color=cellType_label, save=os.path.basename(out_prefix) + '_' + cellType_label + '_original_umap.pdf')
 
-
-    for m in models:
-        sc.pl.umap(annData, color=m, save=os.path.basename(out_prefix) + '_' + m + '_predicted_umap.pdf')
-        sc.pl.umap(annData, color=m + '_accuracy', save=os.path.basename(out_prefix) + '_' + m + '_missed_umap.pdf')
+    with open(out_prefix + 'performance_metrics_per_model_test.tsv', 'w') as f:
+        print('model', 'correct', 'mislablled', 'accuracy', sep="\t", file=f)
+        for m in models:
+            sc.pl.umap(annData, color=m, save=os.path.basename(out_prefix) + '_' + m + '_predicted_umap.pdf')
+            sc.pl.umap(annData, color=m + '_accuracy', save=os.path.basename(out_prefix) + '_' + m + '_missed_umap.pdf')
+            correct = sum(annData.obs[m + '_accuracy'] == 'correct')
+            miss = sum(annData.obs[m + '_accuracy'] != 'correct')
+            print(m, correct, miss, correct / (correct + miss), sep ="\t", file=f)
 
     # Compile cv results
+    cv = {}
+    cv_keys = [i for i in annData.uns.keys() if i.startswith('metrics_')]
+    for a in cv_keys:
+        cv[a] = pd.DataFrame(annData.uns[a])
+        cv[a]['model'] = a.split("metrics_")[1]
+
+    # Writing
+    cv = pd.concat(cv)
+    cv.to_csv(out_prefix + 'performance_metrics_per_model_train.tsv', sep='\t', index=False)
+
+    with open(out_prefix + 'best_pars_per_model.md', 'w') as f:
+        best_pars_keys = [i for i in annData.uns.keys() if i.startswith('best_pars_')]
+        for b in best_pars_keys:
+            print('* ', b.split('best_pars_')[1], sep = '', file=f)
+            for key in annData.uns[b]:
+                print('  * ', key, ': ', annData.uns[b][key], file=f)
