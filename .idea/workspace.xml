@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e8cdb23-f8c0-4328-a4cc-8a437278b4b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loom/python/model_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/loom/python/model_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loom/python/model_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/loom/python/model_plot.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_space/test_models/test_model_on_loom">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="344">
@@ -25,13 +25,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loom/python/model_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+            <state relative-caret-position="765">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
-                <element signature="e#110#120#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,8 +139,8 @@
         <option value="$PROJECT_DIR$/test_space/test_models/test_scanvi.py" />
         <option value="$PROJECT_DIR$/test_space/test_models/test_model_on_loom" />
         <option value="$PROJECT_DIR$/loom/python/model_preprocessing.py" />
-        <option value="$PROJECT_DIR$/loom/python/model_create.py" />
         <option value="$PROJECT_DIR$/loom/python/model_plot.py" />
+        <option value="$PROJECT_DIR$/loom/python/model_create.py" />
       </list>
     </option>
   </component>
@@ -379,16 +379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_space/test_models/test_model_on_loom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///miniconda3/envs/test/lib/python3.7/site-packages/scanpy/plotting/_tools/scatterplots.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2">
@@ -432,8 +422,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loom/python/model_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="765">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -442,10 +432,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loom/python/model_create.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        <state relative-caret-position="214">
+          <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
           <folding>
             <element signature="e#110#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_space/test_models/test_model_on_loom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

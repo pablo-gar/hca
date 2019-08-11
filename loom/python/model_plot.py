@@ -3,7 +3,6 @@ import os
 import model_preprocessing
 import sys
 import pandas as pd
-from matplotlib import pyplot
 
 DPI = 300
 

@@ -56,7 +56,7 @@ def main():
         x_train, y_train, x_test = model_utils.get_mat_and_lab(x=train_h5ad, x_lab=train_y_name, y=test_h5ad)
 
     # Train model
-    model = get_model(model_name, x_train, y_train, n_iter=100)
+    model = get_model(model_name, x_train, y_train, n_iter=50)
 
     # Predict on test data and append predictions to original matrix
     y_test_predicted = model.predict(x_test)
