@@ -72,3 +72,7 @@ def main():
             print('* ', b.split('best_pars_')[1], sep = '', file=f)
             for key in annData.uns[b]:
                 print('  * ', key, ': ', annData.uns[b][key], file=f)
+
+
+if __name__ == "__main__":
+    main()
