@@ -60,7 +60,7 @@ def preprocessing(adata: AnnData,
     :param do_min_genes_filter: Boolean - If True it will apply ce;; filter based on no of genes being expressed
     :param do_select_variable_genes: - If True it will apply select and create variable genes by returning a view of the data
     :param percent_cells: float - frequency of cell expressing genes used for min_cells_filter
-    :param min_genes: int - minimum number of expressed genes for a cell to pass the min_genes_filter
+    :param min_genes: int - minimum number of expressed genes for a cell to pass the min_genes_filte
     :param n_var_genes: int - select this number of var genes
     :return: annData
     '''

@@ -44,6 +44,7 @@ def main():
     sc.tl.umap(annData)
 
     sc.pl.umap(annData, color=cellType_label)
+    sc.pl.umap(annData, save=os.path.basename(out_prefix) + '_' + cellType_label + '_original_umap_noColor.pdf')
     sc.pl.umap(annData, color=cellType_label, save=os.path.basename(out_prefix) + '_' + cellType_label + '_original_umap.pdf')
 
     with open(out_prefix + 'performance_metrics_per_model_test.tsv', 'w') as f:
