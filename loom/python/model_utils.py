@@ -5,8 +5,43 @@ General functions to apply sklearn models on h5ad geneXcell matrices
 
 import scanpy as sc
 import sklearn
+import bbknn
 from anndata import AnnData
 from typing import Union, Optional, Tuple, Collection
+
+def merge_knn(*args: AnnData) -> sc.AnnData:
+    '''
+    Wrapper for merging different datasets using batch balanced knn
+    :param args: AnnDatas to merge
+    :return: Concatenated AnnData
+    '''
+
+    annData = args[0].concatenate(args[1:], batch_key='knn_batch')
+
+    sc.pp.log1p(annData)
+    sc.pp.filter_genes(annData, min_cells=int(annData.n_obs * 0.05))
+    sc.pp.filter_cells(annData, min_genes=5)
+    sc.pp.highly_variable_genes(annData, flavor="seurat")
+    sc.pp.normalize_total(annData, exclude_highly_expressed=True)
+    sc.pp.pca(annData)
+
+    sc.external.pp.bbknn(annData, batch_key='knn_batch', copy=False)
+    sc.tl.umap()
+
+    return annData
+
+def merge_combat(*args: AnnData) -> sc.AnnData:
+    '''
+    Wrapper for merging different datasets using linear regressions
+    uses ComBat
+    :param args: AnnDatas to merge
+    :return: Concatenated AnnData
+    '''
+
+    annData = args[0].concatenate(args[1:], batch_key='batch')
+    sc.pp.combat(annData, key='batch')
+
+    return annData
 
 def subset_annData(x: AnnData, y: AnnData):
     '''
