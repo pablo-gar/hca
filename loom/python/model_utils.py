@@ -4,8 +4,6 @@ General functions to apply sklearn models on h5ad geneXcell matrices
 
 
 import scanpy as sc
-import sklearn
-import bbknn
 from anndata import AnnData
 from typing import Union, Optional, Tuple, Collection
 
