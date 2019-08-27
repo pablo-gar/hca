@@ -59,6 +59,9 @@ def main():
     train_h5ad_original = train_h5ad.copy()
     test_h5ad_original = test_h5ad.copy()
 
+    train_h5ad_original.uns = annDatas[0].uns
+    test_h5ad_original.uns = annDatas[-1].uns
+
     # Pre-preprocess
     train_h5ad = model_preprocessing.preprocessing(train_h5ad, do_log1p=False, do_min_cells_filter=True,
                                                    do_select_variable_genes=True, flavor='cell_ranger',
