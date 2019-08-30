@@ -12,11 +12,13 @@ def main():
     model_name = sys.argv[1]
     train_y_name = sys.argv[2]
     conc_type = sys.argv[3] #[combat|concatenate]
-    out_train_file = sys.argv[4]
-    out_test_file = sys.argv[5]
-    out_plots_dir = sys.argv[6]
-    test_file = sys.argv[7]
-    train_files = sys.argv[8:]
+    do_log1p = model_preprocessing.str_to_bool(sys.argv[4])
+    do_select_variable_genes = model_preprocessing.str_to_bool(sys.argv[5])
+    out_train_file = sys.argv[6]
+    out_test_file = sys.argv[7]
+    out_plots_dir = sys.argv[8]
+    test_file = sys.argv[9]
+    train_files = sys.argv[10:]
 
     #model_name = "LogisticRegression"
     #train_y_name = "cellType"
@@ -63,9 +65,11 @@ def main():
     test_h5ad_original.uns = annDatas[-1].uns
 
     # Pre-preprocess
-    train_h5ad = model_preprocessing.preprocessing(train_h5ad, do_log1p=False, do_min_cells_filter=True,
-                                                   do_select_variable_genes=True, flavor='cell_ranger',
+    train_h5ad = model_preprocessing.preprocessing(train_h5ad, do_log1p=do_log1p, do_min_cells_filter=True,
+                                                   do_select_variable_genes=do_select_variable_genes, flavor='cell_ranger',
                                                    do_min_genes_filter=False)
+
+    test_h5ad = model_preprocessing.preprocessing(test_h5ad, do_log1p=do_log1p, do_min_cells_filter=False, do_select_variable_genes=False, do_min_genes_filter=False)
 
     #Select same genes
     train_h5ad, test_h5ad = model_utils.subset_annData(train_h5ad, test_h5ad)
