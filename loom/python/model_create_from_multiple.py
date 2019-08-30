@@ -50,8 +50,10 @@ def main():
 
 
     # Separate into test and train sets
-    train_ind = conc.obs['batch'].isin(map(str, range(len(train_files))))
-    test_ind = conc.obs['batch'] == str(len(train_files))
+    # train_ind = conc.obs['batch'].isin(map(str, range(len(train_files))))
+    # test_ind = conc.obs['batch'] == str(len(train_files))
+    train_ind = conc.obs['batch'].isin(map(str, range(1, len(train_files) + 1 ) ))
+    test_ind = conc.obs['batch'] == '0'
 
     train_h5ad = conc[train_ind.to_list(),:]
     test_h5ad = conc[test_ind.to_list(),:]
