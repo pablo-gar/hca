@@ -41,7 +41,7 @@ def main():
 
     # Concatenating
     if conc_type == 'concatenate':
-        conc = annDatas[-1].concatenate(*annDatas[:-1])
+        conc = annDatas[0].concatenate(*annDatas[1:])
     elif conc_type == 'combat':
         conc = model_utils.merge_combat(*annDatas)
     else:
@@ -53,8 +53,8 @@ def main():
     # plot_concatenated(conc_basic, out_prefix=os.path.join(out_plots_dir, "concatenated_"))
     # plot_concatenated(conc, out_prefix=os.path.join(out_plots_dir, "combat_"))
 
-    train_ind = conc.obs['batch'].isin(map(str, range(1, len(train_files) + 1 ) ))
-    test_ind = conc.obs['batch'] == '0'
+    train_ind = conc.obs['batch'].isin(map(str, range(len(train_files))))
+    test_ind = conc.obs['batch'] == str(len(train_files))
 
     train_h5ad = conc[train_ind.to_list(),:]
     test_h5ad = conc[test_ind.to_list(),:]
