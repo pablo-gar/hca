@@ -100,7 +100,7 @@ def preprocessing(adata: AnnData,
 
     if do_select_variable_genes:
         print("Selecting", str(n_var_genes), "variable genes")
-        sc.pp.highly_variable_genes(adata, flavor=flavor)
+        sc.pp.highly_variable_genes(adata, flavor=flavor, n_top_genes=2000)
         if remove_non_variable_genes:
             highly_variable_genes = adata.var.highly_variable.to_list()
             adata = adata[:, highly_variable_genes]

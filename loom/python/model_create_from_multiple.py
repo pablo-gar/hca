@@ -20,8 +20,11 @@ def main():
     test_file = sys.argv[9]
     train_files = sys.argv[10:]
 
-    #model_name = "LogisticRegression"
+    #model_name = "RandomForest"
     #train_y_name = "cellType"
+    #conc_type = "concatenate"
+    #do_log1p= True
+    #do_select_variable_genes = True
     #out_plots_dir = "/Users/pgarcia-nietochanzuckerberg.com/"
     #test_file = "/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/pancreas/data/hca_cellTypes.loom"
     #train_files = ["/Users/pgarcia-nietochanzuckerberg.com/projects/cell_type_transfer/pancreas/data/paper_alternative.loom",
@@ -50,10 +53,6 @@ def main():
     # plot_concatenated(conc_basic, out_prefix=os.path.join(out_plots_dir, "concatenated_"))
     # plot_concatenated(conc, out_prefix=os.path.join(out_plots_dir, "combat_"))
 
-
-    # Separate into test and train sets
-    # train_ind = conc.obs['batch'].isin(map(str, range(len(train_files))))
-    # test_ind = conc.obs['batch'] == str(len(train_files))
     train_ind = conc.obs['batch'].isin(map(str, range(1, len(train_files) + 1 ) ))
     test_ind = conc.obs['batch'] == '0'
 
